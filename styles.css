@@ -65,10 +65,12 @@ main:focus { outline: none; }
   background: var(--white); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 14px;
 }
 .stores { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: -8px; }
-.store { display: inline-flex; align-items: center; height: 56px; }
-.store img { height: 50px; width: auto; }
-/* La insignia de Google trae su propio margen transparente: se agranda para que mida lo mismo que la de Apple. */
-.store.gp img { height: 74px; margin: -12px -10px; }
+.stores { --badge-h: 48px; }
+.store { display: inline-flex; align-items: center; height: var(--badge-h); }
+.store img { height: var(--badge-h); width: auto; }
+/* La insignia de Google (646×250) trae 29px de aire transparente arriba y abajo: se agranda y se recorta
+   para que la parte visible mida exactamente lo mismo que la de Apple. */
+.store.gp img { height: calc(var(--badge-h) * 250 / 192); margin-block: calc(var(--badge-h) * -29 / 192); }
 .stores.soon img { opacity: 0.5; }
 .soon-tag {
   margin-top: 8px; rotate: -2deg;
@@ -143,27 +145,64 @@ main:focus { outline: none; }
   background: var(--sun); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 12px;
 }
 
-/* Capturas: tira con scroll horizontal propio (la página no se desplaza de lado) */
-.shot-strip {
-  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 4px max(var(--gutter), calc((100vw - 1080px) / 2 + var(--gutter))) 20px;
-  scrollbar-width: thin;
+/* Capturas: carrusel con la captura central destacada (la página no se desplaza de lado).
+   Con JS: la central crece, las demás se inclinan y el círculo de fondo toma el color de la activa. */
+.shots { --shot-w: min(260px, 64vw); position: relative; overflow: hidden; }
+.shots::before {
+  content: ''; position: absolute; left: 50%; top: 56%; translate: -50% -50%;
+  width: min(560px, 130vw); aspect-ratio: 1; border-radius: 50%;
+  background: var(--active, var(--quiz)); opacity: 0.16;
+  transition: background-color var(--t-move) var(--ease);
 }
+.shots > * { position: relative; }
+.shot-strip {
+  display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 24px calc(50% - var(--shot-w) / 2) 16px;
+  scrollbar-width: none;
+}
+.shot-strip::-webkit-scrollbar { display: none; }
 .shot {
-  flex: 0 0 auto; width: min(240px, 62vw); scroll-snap-align: center;
-  padding: 6px; background: var(--ink); border-radius: 32px; position: relative;
+  flex: 0 0 var(--shot-w); margin: 0; scroll-snap-align: center;
+  display: grid; justify-items: center; gap: 16px;
+  transition: scale var(--t-move) var(--ease), rotate var(--t-move) var(--ease), opacity var(--t-move) var(--ease);
+}
+.shot-frame {
+  width: 100%; padding: 6px; background: var(--ink); border-radius: 32px; position: relative;
+  box-shadow: 0 18px 40px rgba(26, 21, 48, 0.22);
   transition: transform var(--t-move) var(--ease);
 }
 /* Muesca del marco de móvil */
-.shot::before {
+.shot-frame::before {
   content: ''; position: absolute; top: 14px; left: 50%; translate: -50% 0;
-  width: 56px; height: 14px; border-radius: 999px; background: var(--ink); z-index: 1;
+  width: 56px; height: 14px; border-radius: 999px; background: var(--ink);
 }
 .shot img { width: 100%; height: auto; border-radius: 26px; }
-.shot:hover { transform: translateY(-6px); }
+.shot:hover .shot-frame { transform: translateY(-6px); }
+.shot figcaption {
+  background: var(--c); color: var(--fg, var(--ink)); border: 2px solid var(--ink); border-radius: 999px;
+  font-weight: 700; font-size: 16px; padding: 4px 14px; rotate: -2deg; text-align: center;
+  transition: opacity var(--t-move) var(--ease), translate var(--t-move) var(--ease);
+}
+.js .shot { scale: 0.84; rotate: -3deg; opacity: 0.55; }
+.js .shot:nth-child(even) { rotate: 3deg; }
+.js .shot.is-active { scale: 1; rotate: 0deg; opacity: 1; }
+.js .shot figcaption { opacity: 0; translate: 0 8px; }
+.js .shot.is-active figcaption { opacity: 1; translate: 0 0; }
 .shot-strip:focus-visible { outline: 3px solid var(--quiz); outline-offset: -3px; border-radius: 0; }
-.strip-nav { display: flex; justify-content: center; gap: 12px; margin-top: 8px; }
+
+.strip-nav { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 8px; }
 .strip-nav[hidden] { display: none; }
+.dots { display: flex; }
+/* Cada punto es un botón de 32px (cómodo al tocar) con una píldora dentro que se estira al activarse;
+   en reproducción automática, la píldora activa se va rellenando. */
+.dot { width: 32px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.dot[aria-current="true"] { width: 44px; }
+.dot i { width: 10px; height: 10px; border-radius: 999px; background: rgba(26, 21, 48, 0.22); overflow: hidden; transition: width var(--t-move) var(--ease), background-color var(--t-fade) var(--ease); }
+.dot:hover i { background: rgba(26, 21, 48, 0.45); }
+.dot[aria-current="true"] i { width: 32px; background: var(--ink); }
+.dot i::after { content: ''; display: block; height: 100%; background: var(--active, var(--quiz)); scale: 0 1; transform-origin: left; }
+.dot[aria-current="true"] i::after { scale: 1 1; }
+.is-playing .dot[aria-current="true"] i::after { animation: progress var(--autoplay, 3500ms) linear both; }
 .round-btn {
   width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
   background: var(--white); color: var(--ink); border: 2px solid var(--ink); padding: 0;
@@ -237,6 +276,7 @@ main:focus { outline: none; }
 @keyframes bounce { 40% { translate: 0 -8px; rotate: -6deg; } 70% { translate: 0 2px; rotate: 3deg; } }
 @keyframes pop { from { scale: 0.4; } 60% { scale: 1.15; } }
 @keyframes spin { to { rotate: 360deg; } }
+@keyframes progress { from { scale: 0 1; } }
 
 @media (min-width: 640px) {
   .confetti i { width: 18px; height: 52px; }
@@ -270,7 +310,9 @@ main:focus { outline: none; }
   .rise { animation-name: fade; }
   .hero .soon-tag { animation: fade var(--t-reveal) var(--ease) var(--d, 0s) both; }
   .confetti i, .ready-roseta, .test:hover .test-icon, .step-list li.is-visible .step-n { animation: none; }
-  .test:hover, .test:nth-child(odd):hover, .shot:hover, .round-btn:hover, .btn:hover { transform: none; }
+  .test:hover, .test:nth-child(odd):hover, .shot:hover .shot-frame, .round-btn:hover, .btn:hover { transform: none; }
+  .js .shot, .js .shot:nth-child(even) { scale: 1; rotate: 0deg; }
+  .js .shot figcaption { translate: none; }
   .js .tagline-text span { opacity: 1; }
 }
 @keyframes fade { from { opacity: 0; } }

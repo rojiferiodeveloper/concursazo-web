@@ -46,32 +46,84 @@
     words.forEach((w) => wordObserver.observe(w));
   }
 
-  // Tira de capturas: botones anterior / siguiente
+  // Carrusel de capturas: la que cruza el centro es la activa; avanza solo hasta que alguien lo toca
+  const section = document.querySelector('.shots');
   const strip = document.querySelector('.shot-strip');
   const nav = document.querySelector('.strip-nav');
-  if (strip && nav) {
-    const [prev, next] = nav.querySelectorAll('button');
-    const step = () => {
-      const shot = strip.querySelector('.shot');
-      return shot.offsetWidth + parseFloat(getComputedStyle(strip).columnGap || 16);
+  if (section && strip && nav && 'IntersectionObserver' in window) {
+    const AUTOPLAY_MS = 3500;
+    const shots = [...strip.querySelectorAll('.shot')];
+    const [prev, next] = nav.querySelectorAll('.round-btn');
+    const dotsBox = nav.querySelector('.dots');
+    const dots = shots.map((shot, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot';
+      dot.setAttribute('aria-controls', 'capturas');
+      dot.setAttribute('aria-label', `Captura ${i + 1}: ${shot.querySelector('figcaption').textContent}`);
+      dot.append(document.createElement('i'));
+      dotsBox.append(dot);
+      return dot;
+    });
+    section.style.setProperty('--autoplay', `${AUTOPLAY_MS}ms`);
+
+    let active = -1;
+    let inView = false;
+    let paused = false;
+    let stopped = reduceMotion;
+    let timer;
+
+    const schedule = () => {
+      clearTimeout(timer);
+      const playing = !stopped && inView && !paused;
+      section.classList.toggle('is-playing', playing);
+      if (playing) timer = setTimeout(() => goTo((active + 1) % shots.length), AUTOPLAY_MS);
     };
-    const update = () => {
-      prev.disabled = strip.scrollLeft <= 4;
-      next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
-      nav.hidden = prev.disabled && next.disabled;
+    const setActive = (i) => {
+      if (i === active) return;
+      active = i;
+      shots.forEach((s, k) => s.classList.toggle('is-active', k === i));
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+      section.style.setProperty('--active', getComputedStyle(shots[i]).getPropertyValue('--c'));
+      prev.disabled = i === 0;
+      next.disabled = i === shots.length - 1;
+      schedule();
     };
-    let ticking = false;
-    strip.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => { update(); ticking = false; });
-    }, { passive: true });
-    window.addEventListener('resize', update);
+    const goTo = (i) => {
+      const shot = shots[i];
+      strip.scrollTo({
+        left: shot.offsetLeft + shot.offsetWidth / 2 - strip.clientWidth / 2,
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
+    };
+    // Cualquier gesto de la persona detiene la reproducción automática para siempre
+    const stop = () => { stopped = true; schedule(); };
+
+    // Franja estrecha en el centro de la tira: la captura que la cruza pasa a ser la activa
+    const centerObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) if (entry.isIntersecting) setActive(shots.indexOf(entry.target));
+    }, { root: strip, rootMargin: '0px -49% 0px -49%' });
+    shots.forEach((s) => centerObserver.observe(s));
+
+    new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; schedule(); }, { threshold: 0.5 }).observe(strip);
+
+    section.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { paused = true; schedule(); } });
+    section.addEventListener('pointerleave', () => { paused = false; schedule(); });
+    section.addEventListener('focusin', () => { paused = true; schedule(); });
+    section.addEventListener('focusout', () => { paused = false; schedule(); });
+    strip.addEventListener('pointerdown', stop);
+    strip.addEventListener('wheel', stop, { passive: true });
+    strip.addEventListener('keydown', stop);
+
     nav.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
-      strip.scrollBy({ left: Number(btn.dataset.dir) * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+      stop();
+      const target = btn.classList.contains('dot') ? dots.indexOf(btn) : active + Number(btn.dataset.dir);
+      goTo(Math.max(0, Math.min(shots.length - 1, target)));
     });
-    update();
+
+    nav.hidden = false;
+    setActive(0);
   }
 })();

@@ -189,16 +189,32 @@
         <h2 id="shots-title" class="reveal">Así se ve</h2>
       </div>
       <div class="shot-strip" id="capturas" tabindex="0" aria-label="Capturas de la app (desliza para ver más)">
-        <div class="shot"><img src="assets/capturas/01-lobby.jpg" alt="Sala de espera con el código QR y los jugadores" width="540" height="960" loading="lazy"></div>
-        <div class="shot"><img src="assets/capturas/02-quiz-final.jpg" alt="Pregunta del Quiz final con cuatro opciones" width="540" height="960" loading="lazy"></div>
-        <div class="shot"><img src="assets/capturas/03-dibujo.jpg" alt="Prueba de Dibujo: los demás adivinan en directo" width="540" height="960" loading="lazy"></div>
-        <div class="shot"><img src="assets/capturas/04-impostor-rol.jpg" alt="Prueba del Impostor: cada uno ve su papel en secreto" width="540" height="960" loading="lazy"></div>
-        <div class="shot"><img src="assets/capturas/05-podio-final.jpg" alt="Podio final con el ganador" width="540" height="960" loading="lazy"></div>
+        <figure class="shot" style="--c:#00C2A8">
+          <div class="shot-frame"><img src="assets/capturas/01-lobby.jpg" alt="Sala de espera con el código QR y los jugadores" width="540" height="960" loading="lazy"></div>
+          <figcaption>Todos a la sala con el QR</figcaption>
+        </figure>
+        <figure class="shot" style="--c:#7554FF; --fg:#FFFFFF">
+          <div class="shot-frame"><img src="assets/capturas/02-quiz-final.jpg" alt="Pregunta del Quiz final con cuatro opciones" width="540" height="960" loading="lazy"></div>
+          <figcaption>Preguntas del Quiz final</figcaption>
+        </figure>
+        <figure class="shot" style="--c:#FF9A1F">
+          <div class="shot-frame"><img src="assets/capturas/03-dibujo.jpg" alt="Prueba de Dibujo: los demás adivinan en directo" width="540" height="960" loading="lazy"></div>
+          <figcaption>Dibujos en directo</figcaption>
+        </figure>
+        <figure class="shot" style="--c:#FF4F8B">
+          <div class="shot-frame"><img src="assets/capturas/04-impostor-rol.jpg" alt="Prueba del Impostor: cada uno ve su papel en secreto" width="540" height="960" loading="lazy"></div>
+          <figcaption>Tu papel, en secreto</figcaption>
+        </figure>
+        <figure class="shot" style="--c:#FFCB2E">
+          <div class="shot-frame"><img src="assets/capturas/05-podio-final.jpg" alt="Podio final con el ganador" width="540" height="960" loading="lazy"></div>
+          <figcaption>Y un podio para el campeón</figcaption>
+        </figure>
       </div>
       <div class="strip-nav" hidden>
         <button type="button" class="round-btn" data-dir="-1" aria-controls="capturas" aria-label="Captura anterior">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
         </button>
+        <div class="dots"></div>
         <button type="button" class="round-btn" data-dir="1" aria-controls="capturas" aria-label="Captura siguiente">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
         </button>
