@@ -7,6 +7,7 @@
   <meta name="description" content="Un concurso de fiesta para 4 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios. Para jugar en casa con amigos o en familia.">
   <meta name="theme-color" content="#FFF9EC">
   <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://rojiferiodeveloper.github.io/concursazo-web/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -23,24 +24,70 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/Outfit-Bold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "El Concursazo",
+    "description": "Un concurso de fiesta para 4 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "iOS, Android",
+    "inLanguage": "es",
+    "image": "https://rojiferiodeveloper.github.io/concursazo-web/assets/compartir.png",
+    "url": "https://rojiferiodeveloper.github.io/concursazo-web/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Hace falta internet?", "acceptedAnswer": { "@type": "Answer", "text": "No. Todos los móviles tienen que estar en la misma red: la wifi de casa o el punto de acceso del móvil del anfitrión. Con el punto de acceso no se gastan datos, porque el juego nunca se conecta a internet." } },
+      { "@type": "Question", "name": "¿Cuántos pueden jugar?", "acceptedAnswer": { "@type": "Answer", "text": "De 4 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5." } },
+      { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "Nada. Es gratis, sin anuncios y sin compras dentro de la app." } },
+      { "@type": "Question", "name": "¿Hay que registrarse?", "acceptedAnswer": { "@type": "Answer", "text": "No. No hay cuentas: tu nombre y tu avatar se guardan solo en tu móvil." } },
+      { "@type": "Question", "name": "¿Pueden jugar niños?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. En la sala de espera, el anfitrión puede marcar a un jugador como niño: recibirá preguntas adaptadas y ayudas en algunas pruebas, y jugará con todos los demás." } },
+      { "@type": "Question", "name": "No encuentro la partida, ¿qué hago?", "acceptedAnswer": { "@type": "Answer", "text": "Comprobad que estáis todos en la misma wifi o en el punto de acceso del anfitrión. Algunas redes públicas, de hoteles o del trabajo no dejan que los móviles se vean entre sí: en ese caso, usad el punto de acceso. En iPhone, permite el acceso a la red local para la app en Ajustes. Si el QR falla, escribe a mano la dirección y el código de sala que aparecen en el móvil del anfitrión." } },
+      { "@type": "Question", "name": "¿Qué pasa si alguien se desconecta?", "acceptedAnswer": { "@type": "Answer", "text": "La partida se pausa y le espera. Al volver a abrir la app se reconecta solo y el juego sigue a los 3 segundos. Pasados 2 minutos, el anfitrión puede seguir esperando, continuar sin esa persona o quitarla de la partida." } },
+      { "@type": "Question", "name": "¿Y si se cierra la app del anfitrión?", "acceptedAnswer": { "@type": "Answer", "text": "Conviene que el anfitrión mantenga la app abierta y la pantalla encendida. Si se cierra, puede volver a abrirla y reanudar la partida; los demás se reconectarán." } }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="hero">
+    <div class="confetti" aria-hidden="true">
+      <i style="--c:#7554FF; --x:6%;  --y:14%; --r:-24deg; --d:0s"></i>
+      <i style="--c:#00C2A8; --x:14%; --y:46%; --r:32deg;  --d:-1.2s" class="o"></i>
+      <i style="--c:#FF9A1F; --x:4%;  --y:74%; --r:12deg;  --d:-2.4s"></i>
+      <i style="--c:#3DB2FF; --x:18%; --y:88%; --r:-40deg; --d:-0.6s" class="o"></i>
+      <i style="--c:#FF4F8B; --x:92%; --y:12%; --r:28deg;  --d:-1.8s"></i>
+      <i style="--c:#FFCB2E; --x:84%; --y:40%; --r:-16deg; --d:-3s"    class="o"></i>
+      <i style="--c:#FF5A4E; --x:95%; --y:66%; --r:-36deg; --d:-0.9s"></i>
+      <i style="--c:#7554FF; --x:82%; --y:86%; --r:18deg;  --d:-2.1s" class="o"></i>
+    </div>
     <div class="wrap hero-inner">
-      <img class="logo" src="assets/logo.svg" alt="El Concursazo" width="400" height="102">
-      <h1>Convierte el salón en un plató de televisión</h1>
-      <p class="lead">Un concurso de fiesta para <strong>4 a 10 jugadores</strong>, cada uno con su móvil. Uno crea la sala, los demás escanean el QR ¡y a jugar!</p>
-      <ul class="tags">
+      <img class="logo rise" src="assets/logo.svg" alt="El Concursazo" width="400" height="102">
+      <h1 class="rise" style="--d:80ms">Convierte el salón en un plató de televisión</h1>
+      <p class="lead rise" style="--d:160ms">Un concurso de fiesta para <strong>4 a 10 jugadores</strong>, cada uno con su móvil. Uno crea la sala, los demás escanean el QR ¡y a jugar!</p>
+      <ul class="tags rise" style="--d:240ms">
         <li>Sin internet</li>
         <li>Sin cuentas</li>
         <li>Sin anuncios</li>
         <li>Gratis</li>
       </ul>
-      <!-- Al publicar en las tiendas: quitar .soon-tag y la clase «soon», y cambiar cada <span class="store"> por <a href="…">:
+      <!-- Al publicar en las tiendas: quitar .soon-tag y la clase «soon», y cambiar cada <span class="store"> por <a href="…">
+           (aquí y en la sección «Listos»):
            App Store:   https://apps.apple.com/es/app/id6825013150
            Google Play: https://play.google.com/store/apps/details?id=com.rojiferiodev.concursazo -->
-      <p class="soon-tag">Muy pronto en iPhone y Android</p>
-      <div class="stores soon" aria-label="Descargas (próximamente)">
+      <p class="soon-tag rise" style="--d:320ms">Muy pronto en iPhone y Android</p>
+      <div class="stores soon rise" style="--d:360ms" aria-label="Descargas (próximamente)">
         <span class="store">
           <img src="assets/tiendas/app-store.svg" alt="Descárgalo en el App Store" width="150" height="50">
         </span>
@@ -51,11 +98,11 @@
     </div>
   </header>
 
-  <main>
+  <main id="contenido" tabindex="-1">
     <section class="video-section" aria-labelledby="video-title">
       <div class="wrap">
         <h2 id="video-title" class="sr-only">Anuncio</h2>
-        <div class="phone">
+        <div class="phone reveal">
           <video controls playsinline preload="metadata" poster="assets/anuncio-poster.jpg" width="720" height="1280">
             <source src="assets/anuncio.mp4" type="video/mp4">
             Tu navegador no puede reproducir el vídeo. <a href="assets/anuncio.mp4">Descárgalo aquí</a>.
@@ -64,21 +111,27 @@
       </div>
     </section>
 
+    <section class="tagline" aria-label="En resumen">
+      <div class="wrap">
+        <p class="tagline-text"><span>Siete</span> <span>pruebas,</span> <span>un</span> <span>salón</span> <span>lleno</span> <span>de</span> <span class="hl" style="--c:#FF4F8B">risas</span> <span>y</span> <span>un</span> <span>único</span> <span class="hl" style="--c:#7554FF">campeón</span> <span>que</span> <span>tendrá</span> <span>que</span> <span>defender</span> <span>el</span> <span>título</span> <span>en</span> <span>la</span> <span class="hl" style="--c:#00C2A8">revancha.</span></p>
+      </div>
+    </section>
+
     <section class="steps" aria-labelledby="steps-title">
       <div class="wrap">
-        <h2 id="steps-title">Cómo se juega</h2>
+        <h2 id="steps-title" class="reveal">Cómo se juega</h2>
         <ol class="step-list">
-          <li>
+          <li class="reveal">
             <span class="step-n" style="--c:#7554FF">1</span>
             <h3>Un móvil crea la sala</h3>
             <p>El anfitrión elige las pruebas y aparece un código QR. Puede jugar o hacer de presentador.</p>
           </li>
-          <li>
+          <li class="reveal">
             <span class="step-n" style="--c:#00C2A8">2</span>
             <h3>Los demás se unen</h3>
             <p>Escanean el QR desde la app. Basta con estar en la misma wifi o en el punto de acceso del anfitrión.</p>
           </li>
-          <li>
+          <li class="reveal">
             <span class="step-n" style="--c:#FF4F8B">3</span>
             <h3>¡A jugar!</h3>
             <p>Siete pruebas, clasificación animada tras cada una y un podio final con lluvia de aplausos.</p>
@@ -89,42 +142,43 @@
 
     <section class="tests" aria-labelledby="tests-title">
       <div class="wrap">
-        <h2 id="tests-title">Siete pruebas para todos los gustos</h2>
+        <h2 id="tests-title" class="reveal">Siete pruebas para todos los gustos</h2>
         <ul class="test-grid">
-          <li class="test" style="--c:#00C2A8">
+          <li class="test final reveal" style="--c:#7554FF">
+            <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 24 C21 10 43 10 43 24 C43 34 32 33 32 42" class="s"/><circle cx="32" cy="54" r="4.5" class="f"/></svg>
+            <span class="test-badge">El gran final</span>
+            <h3>Quiz final</h3>
+            <p>El gran cierre: preguntas de seis categorías y la opción secreta de arriesgarte a doblar tus puntos.</p>
+          </li>
+          <li class="test reveal" style="--c:#00C2A8">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="19" width="54" height="26" rx="7" class="s"/><path d="M17 19 V32 M29 19 V37 M41 19 V32" class="s"/></svg>
             <h3>Estimación</h3>
             <p>¿Cuántos kilómetros mide el río? Gana quien más se acerque.</p>
           </li>
-          <li class="test" style="--c:#FF4F8B">
+          <li class="test reveal" style="--c:#FF4F8B">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="17" cy="42" r="10" class="f"/><circle cx="47" cy="42" r="10" class="f"/><circle cx="32" cy="16" r="9" class="s"/></svg>
             <h3>Impostor</h3>
             <p>Todos conocen la palabra secreta… menos el impostor. ¿Sabréis descubrirlo?</p>
           </li>
-          <li class="test" style="--c:#FF9A1F">
+          <li class="test reveal" style="--c:#FF9A1F">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M11 53 L14 39 L40 13 L51 24 L25 50 Z" class="s"/><path d="M34 19 L45 30" class="s"/></svg>
             <h3>Dibujo</h3>
             <p>Uno dibuja en su móvil y los demás lo ven en directo. ¿Qué es?</p>
           </li>
-          <li class="test" style="--c:#3DB2FF">
+          <li class="test reveal" style="--c:#3DB2FF">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 13 H56 V43 H35 L22 55 V43 H8 Z" class="s"/><path d="M16 28 q4 -7 8 0 t8 0 t8 0" class="s"/></svg>
             <h3>Mentiroso</h3>
             <p>Inventa una respuesta tan creíble que los demás piensen que es la verdadera.</p>
           </li>
-          <li class="test" style="--c:#FF5A4E">
+          <li class="test reveal" style="--c:#FF5A4E">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M37 5 L13 36 H30 L26 59 L51 26 H34 Z" class="s"/></svg>
             <h3>Reflejos</h3>
             <p>Espera al verde… y toca antes que nadie. ¡Cuidado con los señuelos!</p>
           </li>
-          <li class="test" style="--c:#FFCB2E">
+          <li class="test reveal" style="--c:#FFCB2E">
             <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="19" cy="19" r="10" class="f"/><circle cx="45" cy="19" r="10" class="s"/><circle cx="19" cy="45" r="10" class="s"/><circle cx="45" cy="45" r="10" class="f"/></svg>
             <h3>Memoria</h3>
             <p>Repite la secuencia de colores y sonidos. Cada ronda, una más.</p>
-          </li>
-          <li class="test final" style="--c:#7554FF">
-            <svg class="test-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 24 C21 10 43 10 43 24 C43 34 32 33 32 42" class="s"/><circle cx="32" cy="54" r="4.5" class="f"/></svg>
-            <h3>Quiz final</h3>
-            <p>El gran cierre: preguntas de seis categorías y la opción secreta de arriesgarte a doblar tus puntos.</p>
           </li>
         </ul>
       </div>
@@ -132,38 +186,107 @@
 
     <section class="shots" aria-labelledby="shots-title">
       <div class="wrap">
-        <h2 id="shots-title">Así se ve</h2>
+        <h2 id="shots-title" class="reveal">Así se ve</h2>
       </div>
-      <div class="shot-strip" tabindex="0" aria-label="Capturas de la app (desliza para ver más)">
-        <img src="assets/capturas/01-lobby.jpg" alt="Sala de espera con el código QR y los jugadores" width="540" height="960" loading="lazy">
-        <img src="assets/capturas/02-quiz-final.jpg" alt="Pregunta del Quiz final con cuatro opciones" width="540" height="960" loading="lazy">
-        <img src="assets/capturas/03-dibujo.jpg" alt="Prueba de Dibujo: los demás adivinan en directo" width="540" height="960" loading="lazy">
-        <img src="assets/capturas/04-impostor-rol.jpg" alt="Prueba del Impostor: cada uno ve su papel en secreto" width="540" height="960" loading="lazy">
-        <img src="assets/capturas/05-podio-final.jpg" alt="Podio final con el ganador" width="540" height="960" loading="lazy">
+      <div class="shot-strip" id="capturas" tabindex="0" aria-label="Capturas de la app (desliza para ver más)">
+        <div class="shot"><img src="assets/capturas/01-lobby.jpg" alt="Sala de espera con el código QR y los jugadores" width="540" height="960" loading="lazy"></div>
+        <div class="shot"><img src="assets/capturas/02-quiz-final.jpg" alt="Pregunta del Quiz final con cuatro opciones" width="540" height="960" loading="lazy"></div>
+        <div class="shot"><img src="assets/capturas/03-dibujo.jpg" alt="Prueba de Dibujo: los demás adivinan en directo" width="540" height="960" loading="lazy"></div>
+        <div class="shot"><img src="assets/capturas/04-impostor-rol.jpg" alt="Prueba del Impostor: cada uno ve su papel en secreto" width="540" height="960" loading="lazy"></div>
+        <div class="shot"><img src="assets/capturas/05-podio-final.jpg" alt="Podio final con el ganador" width="540" height="960" loading="lazy"></div>
+      </div>
+      <div class="strip-nav" hidden>
+        <button type="button" class="round-btn" data-dir="-1" aria-controls="capturas" aria-label="Captura anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg>
+        </button>
+        <button type="button" class="round-btn" data-dir="1" aria-controls="capturas" aria-label="Captura siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg>
+        </button>
       </div>
     </section>
 
     <section class="features" aria-labelledby="features-title">
       <div class="wrap">
-        <h2 id="features-title">Pensado para jugar en casa</h2>
+        <h2 id="features-title" class="reveal">Pensado para jugar en casa</h2>
         <ul class="feature-grid">
-          <li>
+          <li class="reveal">
             <h3>Sin internet</h3>
             <p>Funciona con la wifi de casa o con el punto de acceso del móvil del anfitrión, sin gastar datos. Si alguien pierde la conexión, la partida le espera.</p>
           </li>
-          <li>
+          <li class="reveal">
             <h3>Para toda la familia</h3>
             <p>Marca a los peques como niños y recibirán preguntas adaptadas y ayudas en cada prueba. Nada de contenido picante.</p>
           </li>
-          <li>
+          <li class="reveal">
             <h3>Justo y emocionante</h3>
             <p>Puntuación equilibrada en cada prueba, clasificación tras cada una y un campeón que tendrá que defender el título en la revancha.</p>
           </li>
-          <li>
+          <li class="reveal">
             <h3>Tu privacidad, intacta</h3>
             <p>Sin registro, sin anuncios, sin compras y sin recogida de datos. Lo que pasa en la partida se queda en la partida.</p>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-inner">
+        <div class="faq-head reveal">
+          <h2 id="faq-title">Preguntas frecuentes</h2>
+          <p>¿Te queda alguna duda? Tienes más ayuda en la <a href="https://rojiferiodeveloper.github.io/privacy-policy/concursazo/soporte/">página de soporte</a> o escríbenos a <a href="mailto:rojiferio.developer@gmail.com">rojiferio.developer@gmail.com</a>.</p>
+        </div>
+        <dl class="faq-list">
+          <div class="reveal">
+            <dt>¿Hace falta internet?</dt>
+            <dd>No. Todos los móviles tienen que estar en la misma red: la wifi de casa o el punto de acceso del móvil del anfitrión. Con el punto de acceso no se gastan datos, porque el juego nunca se conecta a internet.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Cuántos pueden jugar?</dt>
+            <dd>De 4 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Cuánto cuesta?</dt>
+            <dd>Nada. Es gratis, sin anuncios y sin compras dentro de la app.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Hay que registrarse?</dt>
+            <dd>No. No hay cuentas: tu nombre y tu avatar se guardan solo en tu móvil.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Pueden jugar niños?</dt>
+            <dd>Sí. En la sala de espera, el anfitrión puede marcar a un jugador como niño: recibirá preguntas adaptadas y ayudas en algunas pruebas, y jugará con todos los demás.</dd>
+          </div>
+          <div class="reveal">
+            <dt>No encuentro la partida, ¿qué hago?</dt>
+            <dd>Comprobad que estáis todos en la misma wifi o en el punto de acceso del anfitrión. Algunas redes públicas, de hoteles o del trabajo no dejan que los móviles se vean entre sí: en ese caso, usad el punto de acceso. En iPhone, permite el acceso a la red local para la app en Ajustes. Si el QR falla, escribe a mano la dirección y el código de sala que aparecen en el móvil del anfitrión.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Qué pasa si alguien se desconecta?</dt>
+            <dd>La partida se pausa y le espera. Al volver a abrir la app se reconecta solo y el juego sigue a los 3 segundos. Pasados 2 minutos, el anfitrión puede seguir esperando, continuar sin esa persona o quitarla de la partida.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Y si se cierra la app del anfitrión?</dt>
+            <dd>Conviene que el anfitrión mantenga la app abierta y la pantalla encendida. Si se cierra, puede volver a abrirla y reanudar la partida; los demás se reconectarán.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="ready" aria-labelledby="ready-title">
+      <div class="wrap">
+        <div class="ready-card reveal">
+          <img class="ready-roseta" src="assets/roseta.svg" alt="" width="96" height="96">
+          <h2 id="ready-title">Prepara el salón: el concurso está a punto de empezar</h2>
+          <p class="soon-tag">Muy pronto en iPhone y Android</p>
+          <div class="stores soon" aria-label="Descargas (próximamente)">
+            <span class="store">
+              <img src="assets/tiendas/app-store.svg" alt="Descárgalo en el App Store" width="150" height="50">
+            </span>
+            <span class="store gp">
+              <img src="assets/tiendas/google-play.png" alt="Disponible en Google Play" width="194" height="75">
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
