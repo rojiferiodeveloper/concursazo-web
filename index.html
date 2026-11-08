@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>El Concursazo · Juego de fiesta para jugar en grupo</title>
-  <meta name="description" content="Un concurso de fiesta para 4 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios. Para jugar en casa con amigos o en familia.">
+  <meta name="description" content="Un concurso de fiesta para 2 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios. Para jugar en casa con amigos o en familia.">
   <meta name="theme-color" content="#FFF9EC">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://rojiferiodeveloper.github.io/concursazo-web/">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="El Concursazo">
   <meta property="og:title" content="El Concursazo · Convierte el salón en un plató de televisión">
-  <meta property="og:description" content="Un concurso de fiesta para 4 a 10 jugadores, cada uno con su móvil. Sin internet, sin cuentas, sin anuncios.">
+  <meta property="og:description" content="Un concurso de fiesta para 2 a 10 jugadores, cada uno con su móvil. Sin internet, sin cuentas, sin anuncios.">
   <meta property="og:url" content="https://rojiferiodeveloper.github.io/concursazo-web/">
   <meta property="og:image" content="https://rojiferiodeveloper.github.io/concursazo-web/assets/compartir.png">
   <meta property="og:image:width" content="1024">
@@ -32,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "name": "El Concursazo",
-    "description": "Un concurso de fiesta para 4 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios.",
+    "description": "Un concurso de fiesta para 2 a 10 jugadores, cada uno con su móvil. Siete pruebas, sin internet, sin cuentas y sin anuncios.",
     "applicationCategory": "GameApplication",
     "operatingSystem": "iOS, Android",
     "inLanguage": "es",
@@ -47,10 +47,12 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "¿Hace falta internet?", "acceptedAnswer": { "@type": "Answer", "text": "No. Todos los móviles tienen que estar en la misma red: la wifi de casa o el punto de acceso del móvil del anfitrión. Con el punto de acceso no se gastan datos, porque el juego nunca se conecta a internet." } },
-      { "@type": "Question", "name": "¿Cuántos pueden jugar?", "acceptedAnswer": { "@type": "Answer", "text": "De 4 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5." } },
+      { "@type": "Question", "name": "¿Cuántos pueden jugar?", "acceptedAnswer": { "@type": "Answer", "text": "De 2 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5." } },
       { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "Nada. Es gratis, sin anuncios y sin compras dentro de la app." } },
       { "@type": "Question", "name": "¿Hay que registrarse?", "acceptedAnswer": { "@type": "Answer", "text": "No. No hay cuentas: tu nombre y tu avatar se guardan solo en tu móvil." } },
       { "@type": "Question", "name": "¿Pueden jugar niños?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. En la sala de espera, el anfitrión puede marcar a un jugador como niño: recibirá preguntas adaptadas y ayudas en algunas pruebas, y jugará con todos los demás." } },
+      { "@type": "Question", "name": "¿Se puede jugar solo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, en el modo entrenamiento: eliges una prueba (Quiz, Estimación, Reflejos o Memoria) y practicas sin red y sin puntos." } },
+      { "@type": "Question", "name": "¿Se puede ver la partida en una pantalla grande?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Al crear la partida, activa «Pantalla grande»: el móvil del anfitrión muestra una dirección y un QR para abrirla en cualquier navegador de la misma wifi o del punto de acceso. La pantalla solo muestra la partida en directo, sin desvelar respuestas ni dar ventaja a nadie." } },
       { "@type": "Question", "name": "No encuentro la partida, ¿qué hago?", "acceptedAnswer": { "@type": "Answer", "text": "Comprobad que estáis todos en la misma wifi o en el punto de acceso del anfitrión. Algunas redes públicas, de hoteles o del trabajo no dejan que los móviles se vean entre sí: en ese caso, usad el punto de acceso. En iPhone, permite el acceso a la red local para la app en Ajustes. Si el QR falla, escribe a mano la dirección y el código de sala que aparecen en el móvil del anfitrión." } },
       { "@type": "Question", "name": "¿Qué pasa si alguien se desconecta?", "acceptedAnswer": { "@type": "Answer", "text": "La partida se pausa y le espera. Al volver a abrir la app se reconecta solo y el juego sigue a los 3 segundos. Pasados 2 minutos, el anfitrión puede seguir esperando, continuar sin esa persona o quitarla de la partida." } },
       { "@type": "Question", "name": "¿Y si se cierra la app del anfitrión?", "acceptedAnswer": { "@type": "Answer", "text": "Conviene que el anfitrión mantenga la app abierta y la pantalla encendida. Si se cierra, puede volver a abrirla y reanudar la partida; los demás se reconectarán." } }
@@ -75,7 +77,7 @@
     <div class="wrap hero-inner">
       <img class="logo rise" src="assets/logo.svg" alt="El Concursazo" width="400" height="102">
       <h1 class="rise" style="--d:80ms">Convierte el salón en un plató de televisión</h1>
-      <p class="lead rise" style="--d:160ms">Un concurso de fiesta para <strong>4 a 10 jugadores</strong>, cada uno con su móvil. Uno crea la sala, los demás escanean el QR ¡y a jugar!</p>
+      <p class="lead rise" style="--d:160ms">Un concurso de fiesta para <strong>2 a 10 jugadores</strong>, cada uno con su móvil. Uno crea la sala, los demás escanean el QR ¡y a jugar!</p>
       <ul class="tags rise" style="--d:240ms">
         <li>Sin internet</li>
         <li>Sin cuentas</li>
@@ -238,6 +240,14 @@
             <h3>Tu privacidad, intacta</h3>
             <p>Sin registro, sin anuncios, sin compras y sin recogida de datos. Lo que pasa en la partida se queda en la partida.</p>
           </li>
+          <li class="reveal">
+            <h3>Entrena en solitario</h3>
+            <p>¿No hay nadie en casa? Practica el Quiz, la Estimación, los Reflejos y la Memoria tú solo, sin red y sin puntos, para llegar en forma a la próxima partida.</p>
+          </li>
+          <li class="reveal">
+            <h3>Síguelo en la tele</h3>
+            <p>Abre la partida en cualquier navegador conectado a la misma wifi (un portátil en la tele, un ordenador o una smart TV) y el público verá el concurso en directo, como en un plató.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -255,7 +265,7 @@
           </div>
           <div class="reveal">
             <dt>¿Cuántos pueden jugar?</dt>
-            <dd>De 4 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5.</dd>
+            <dd>De 2 a 10 jugadores, cada uno con su móvil. Mentiroso funciona mejor a partir de 5.</dd>
           </div>
           <div class="reveal">
             <dt>¿Cuánto cuesta?</dt>
@@ -268,6 +278,14 @@
           <div class="reveal">
             <dt>¿Pueden jugar niños?</dt>
             <dd>Sí. En la sala de espera, el anfitrión puede marcar a un jugador como niño: recibirá preguntas adaptadas y ayudas en algunas pruebas, y jugará con todos los demás.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Se puede jugar solo?</dt>
+            <dd>Sí, en el modo entrenamiento: eliges una prueba (Quiz, Estimación, Reflejos o Memoria) y practicas sin red y sin puntos.</dd>
+          </div>
+          <div class="reveal">
+            <dt>¿Se puede ver la partida en una pantalla grande?</dt>
+            <dd>Sí. Al crear la partida, activa «Pantalla grande»: el móvil del anfitrión muestra una dirección y un QR para abrirla en cualquier navegador de la misma wifi o del punto de acceso. La pantalla solo muestra la partida en directo, sin desvelar respuestas ni dar ventaja a nadie.</dd>
           </div>
           <div class="reveal">
             <dt>No encuentro la partida, ¿qué hago?</dt>
