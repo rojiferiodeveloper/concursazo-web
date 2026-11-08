@@ -71,7 +71,11 @@ main:focus { outline: none; }
 /* La insignia de Google (646×250) trae 29px de aire transparente arriba y abajo: se agranda y se recorta
    para que la parte visible mida exactamente lo mismo que la de Apple. */
 .store.gp img { height: calc(var(--badge-h) * 250 / 192); margin-block: calc(var(--badge-h) * -29 / 192); }
-.stores.soon img { opacity: 0.5; }
+.store.beta img { opacity: 0.5; }
+a.store { border-radius: 10px; transition: transform var(--t-fade) var(--ease); }
+a.store:hover { transform: translateY(-2px); }
+.beta-note { margin-top: 12px; font-size: 15px; max-width: 34em; margin-inline: auto; text-align: center; }
+.beta-note a { font-weight: 700; }
 .soon-tag {
   margin-top: 8px; rotate: -2deg;
   background: var(--sun); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px;
