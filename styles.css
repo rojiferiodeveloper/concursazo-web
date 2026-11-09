@@ -76,6 +76,13 @@ a.store { border-radius: 10px; transition: transform var(--t-fade) var(--ease); 
 a.store:hover { transform: translateY(-2px); }
 .beta-note { margin-top: 12px; font-size: 15px; max-width: 34em; margin-inline: auto; text-align: center; }
 .beta-note a { font-weight: 700; }
+.beta-steps { list-style: none; counter-reset: paso; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; padding: 0; margin: 10px 0 0; }
+.beta-steps li { counter-increment: paso; display: inline-flex; align-items: center; gap: 8px; }
+.beta-steps li::before {
+  content: counter(paso); display: inline-grid; place-items: center; width: 26px; height: 26px; flex: none;
+  border-radius: 50%; background: var(--quiz); color: var(--white); font-weight: 700; font-size: 14px;
+}
+.beta-steps a { text-underline-offset: 3px; }
 .soon-tag {
   margin-top: 8px; rotate: -2deg;
   background: var(--sun); color: var(--ink); border: 2px solid var(--ink); border-radius: 999px;
